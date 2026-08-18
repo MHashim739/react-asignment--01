@@ -1,0 +1,192 @@
+.navbar {
+  width: 100%;
+  min-height: 80px;
+  padding: 0 6%;
+
+  display: flex;
+  align-items: center;
+  gap: 40px;
+
+  background-color: #fff;
+}
+
+.navbar-logo {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.navbar-links a {
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.navbar-search {
+  flex: 1;
+  max-width: 550px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 0 16px;
+
+  background-color: #f0f0f0;
+  border-radius: 24px;
+}
+
+.navbar-search span {
+  font-size: 24px;
+  color: #666;
+}
+
+.navbar-search input {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.navbar-icons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navbar-icons button {
+  border: none;
+  background: transparent;
+
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1000px) {
+
+  .navbar {
+    gap: 20px;
+    padding: 0 4%;
+  }
+
+  .navbar-links {
+    gap: 15px;
+  }
+
+  .navbar-search {
+    max-width: 350px;
+  }
+
+  .navbar-logo {
+    font-size: 26px;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    min-height: 70px;
+    padding: 0 20px;
+    gap: 15px;
+  }
+
+  /* Mobile par navigation links hide */
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-logo {
+    font-size: 24px;
+  }
+
+  .navbar-search {
+    flex: 1;
+    height: 40px;
+    padding: 0 12px;
+  }
+
+  .navbar-search span {
+    font-size: 20px;
+  }
+
+  .navbar-search input {
+    font-size: 13px;
+  }
+
+  .navbar-icons {
+    gap: 8px;
+  }
+
+  .navbar-icons button {
+    font-size: 19px;
+  }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+  .navbar {
+    min-height: 65px;
+    padding: 0 12px;
+    gap: 10px;
+  }
+
+  .navbar-logo {
+    font-size: 20px;
+  }
+
+  .navbar-search {
+    height: 36px;
+    padding: 0 10px;
+  }
+
+  .navbar-search span {
+    font-size: 18px;
+  }
+
+  .navbar-search input {
+    font-size: 12px;
+  }
+
+  .navbar-icons {
+    gap: 4px;
+  }
+
+  .navbar-icons button {
+    font-size: 18px;
+  }
+}
