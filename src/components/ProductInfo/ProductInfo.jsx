@@ -1,10 +1,10 @@
 import { useState } from "react";
-import "./ProductInfo.css";
+import "./Productinfo.css";
 import NewArrivals from "../NewArrivals/NewArrivals";
 import CustomerReviews from "../CustomerReviews/CustomerReviews";
-import FAQ from "../FAQ/Faq";
+import FAQ from "../FAQ/FAQ";
 
-const ProductInfo = () => {
+const Productinfo = () => {
     const [activeTab, setActiveTab] = useState("details");
   return (
   <section className="product-info">
@@ -24,7 +24,7 @@ const ProductInfo = () => {
   </ul>
 
  {activeTab === "details" && (
-  <div className="product-details-content">
+  <div className="Product-details-content">
     <p>
       This product is designed with high-quality materials and a modern
       style. It provides excellent comfort, durability, and a great
@@ -49,4 +49,4 @@ const ProductInfo = () => {
   );
 };
 
-export default ProductInfo;
+export default Productinfo;

@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import products from "../../data/Products";
 import "./ProductDetail.css";
-import ProductInfo from "../../components/ProductInfo/ProductInfo";
+import Productinfo from "../../components/Productinfo/Productinfo";
 const ProductDetail = () => {
   const { id } = useParams();
 
@@ -85,7 +85,7 @@ const ProductDetail = () => {
           </button>
         </div>
       </section>
-        <ProductInfo/>
+        <Productinfo/>
     </>
   );
 };
