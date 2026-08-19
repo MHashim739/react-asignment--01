@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Productinfo.css";
+import "./ProductInfo.css";
 import NewArrivals from "../NewArrivals/NewArrivals";
 import CustomerReviews from "../CustomerReviews/CustomerReviews";
 import FAQ from "../FAQ/FAQ";
@@ -24,7 +24,7 @@ const ProductInfo = () => {
   </ul>
 
  {activeTab === "details" && (
-  <div className="Product-details-content">
+  <div className="product-details-content">
     <p>
       This product is designed with high-quality materials and a modern
       style. It provides excellent comfort, durability, and a great
