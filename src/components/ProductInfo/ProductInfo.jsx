@@ -4,7 +4,7 @@ import NewArrivals from "../NewArrivals/NewArrivals";
 import CustomerReviews from "../CustomerReviews/CustomerReviews";
 import FAQ from "../FAQ/FAQ";
 
-const Productinfo = () => {
+const ProductInfo = () => {
     const [activeTab, setActiveTab] = useState("details");
   return (
   <section className="product-info">
@@ -49,4 +49,4 @@ const Productinfo = () => {
   );
 };
 
-export default Productinfo;
+export default ProductInfo;
