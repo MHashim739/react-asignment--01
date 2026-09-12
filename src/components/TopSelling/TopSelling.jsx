@@ -15,10 +15,10 @@ const TopSelling = () => {
       <h2>TOP SELLING</h2>
 
       <div className="products-grid">
-        {visibleProducts.map((products) => (
+        {visibleProducts.map((product) => (
           <ProductCard
-            key={products.id}
-            product={products}
+            key={product.id}
+            product={product}
           />
         ))}
       </div>
