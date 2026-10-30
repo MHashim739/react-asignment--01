@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./TopSelling.css";
-import products from "../../data/products";
+import products from "../../data/products.js";
 import ProductCard from "../ProductCard/ProductCard";
 
 const TopSelling = () => {
