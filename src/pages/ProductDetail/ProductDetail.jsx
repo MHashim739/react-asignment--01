@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
-import products from "../../data/products";
 import "./ProductDetail.css";
+import products from "../../data/products";
 import ProductInfo from "../../components/ProductInfo/ProductInfo";
 // import Productinfo from "../../components/ProductInfo/ProductInfo";
 const ProductDetail = () => {
