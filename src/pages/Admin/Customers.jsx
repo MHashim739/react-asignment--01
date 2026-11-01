@@ -1,9 +1,7 @@
 
 import { useEffect, useState } from "react";
 import "./Customers.css";
-
-const API_URL = "http://localhost:5000/api/orders/customers";
-
+import API_URL from "../../services/api";
 function Customers() {
   const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -14,7 +12,7 @@ function Customers() {
       setLoading(true);
       setError("");
 
-      const response = await fetch(API_URL, {
+     const response = await fetch(`${API_URL}/api/orders/customers`, {
         method: "GET",
         credentials: "include",
       });

@@ -4,8 +4,6 @@ import { useState } from "react";
 import API_URL from "../../services/api";
 import "./Cart.css";
 
-// const API_URL = "http://localhost:5000/api/orders";
-
 const Cart = () => {
   const [cart, setCart] = useState(
     JSON.parse(localStorage.getItem("cart")) || []
