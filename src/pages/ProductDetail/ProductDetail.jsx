@@ -1,18 +1,38 @@
+
+import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./ProductDetail.css";
-import products from "../../data/products.js";
+import { getProductById } from "../../services/productService";
 import ProductInfo from "../../components/ProductInfo/ProductInfo";
-// import Productinfo from "../../components/ProductInfo/ProductInfo";
+
 const ProductDetail = () => {
   const { id } = useParams();
 
-  const product = products.find(
-    (item) => item.id === Number(id)
-  );
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  if (!product) {
-    return <h2>Product not found</h2>;
-  }
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const data = await getProductById(id);
+
+        setProduct({
+          ...data,
+          id: data._id,
+          discount: data.discount
+            ? `-${data.discount}%`
+            : "",
+        });
+      } catch (error) {
+        setError("Product not found");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProduct();
+  }, [id]);
 
   const handleAddToCart = () => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -33,9 +53,16 @@ const ProductDetail = () => {
     alert("Product added to cart!");
   };
 
+  if (loading) {
+    return <h2>Loading product...</h2>;
+  }
+
+  if (error || !product) {
+    return <h2>Product not found</h2>;
+  }
+
   return (
     <>
-      {/* Product Page Navigation */}
       <div className="product-page-nav">
         <div className="product-page-nav-links">
           <Link to="/">Home</Link>
@@ -44,7 +71,6 @@ const ProductDetail = () => {
         </div>
       </div>
 
-      {/* Product Details */}
       <section className="product-detail">
         <div className="product-detail-image">
           <img src={product.image} alt={product.name} />
@@ -74,8 +100,8 @@ const ProductDetail = () => {
           </div>
 
           <p>
-            This stylish product is designed with comfort and
-            quality in mind. Perfect for your everyday look.
+            {product.description ||
+              "This stylish product is designed with comfort and quality in mind."}
           </p>
 
           <button
@@ -86,7 +112,8 @@ const ProductDetail = () => {
           </button>
         </div>
       </section>
-        <ProductInfo/>
+
+      <ProductInfo />
     </>
   );
 };

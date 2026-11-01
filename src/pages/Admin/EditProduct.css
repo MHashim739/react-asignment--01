@@ -1,0 +1,132 @@
+
+.edit-product-page {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 40px 20px;
+}
+
+.edit-product-card {
+  max-width: 750px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
+}
+
+.edit-product-heading {
+  margin-bottom: 30px;
+}
+
+.edit-product-heading h1 {
+  font-size: 28px;
+  color: #111;
+  margin-bottom: 8px;
+}
+
+.edit-product-heading p {
+  color: #777;
+  font-size: 14px;
+}
+
+.edit-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 22px;
+  flex: 1;
+}
+
+.edit-form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #222;
+}
+
+.edit-form-group input,
+.edit-form-group textarea {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.edit-form-group input:focus,
+.edit-form-group textarea:focus {
+  border-color: #111;
+}
+
+.edit-form-group textarea {
+  resize: vertical;
+}
+
+.edit-form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.edit-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.edit-form-actions button {
+  padding: 13px 25px;
+  border: none;
+  border-radius: 25px;
+  background: #111;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.edit-form-actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.edit-form-actions .edit-cancel-btn {
+  background: #eee;
+  color: #111;
+}
+
+.edit-error {
+  color: #d00;
+  background: #fff0f0;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  .edit-product-page {
+    padding: 20px 12px;
+  }
+
+  .edit-product-card {
+    padding: 22px 16px;
+  }
+
+  .edit-product-heading h1 {
+    font-size: 23px;
+  }
+
+  .edit-form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .edit-form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .edit-form-actions button {
+    width: 100%;
+  }
+}

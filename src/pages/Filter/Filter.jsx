@@ -1,11 +1,39 @@
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import products from "../../data/products.js";
+import { getProducts } from "../../services/productService";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import "./Filter.css";
 
 const Filter = () => {
   const [maxPrice, setMaxPrice] = useState(200);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await getProducts();
+
+        const formattedProducts = data.map((product) => ({
+          ...product,
+          id: product._id,
+          discount: product.discount
+            ? `-${product.discount}%`
+            : "",
+        }));
+
+        setProducts(formattedProducts);
+      } catch (error) {
+        setError("Products load nahi ho sake.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const filteredProducts = products.filter(
     (product) => product.price <= maxPrice
@@ -13,7 +41,6 @@ const Filter = () => {
 
   return (
     <section className="filter-page">
-
       <div className="filter-top">
         <Link to="/" className="filter-back">
           ←
@@ -25,10 +52,7 @@ const Filter = () => {
       </div>
 
       <div className="filter-layout">
-
-        {/* LEFT SIDE FILTER */}
         <aside className="filter-sidebar">
-
           <div className="filter-section">
             <h2>Categories</h2>
 
@@ -77,9 +101,7 @@ const Filter = () => {
             <div className="size-options">
               <button>Small</button>
               <button>Medium</button>
-              <button className="selected-size">
-                Large
-              </button>
+              <button className="selected-size">Large</button>
               <button>XL</button>
             </div>
           </div>
@@ -98,16 +120,21 @@ const Filter = () => {
           <button className="apply-filter-btn">
             Apply Filter
           </button>
-
         </aside>
 
-        {/* RIGHT SIDE PRODUCTS */}
         <div className="filtered-products">
-
           <div className="products-heading">
             <h2>Products</h2>
             <span>{filteredProducts.length} Products</span>
           </div>
+
+          {loading && <p>Loading products...</p>}
+
+          {error && <p>{error}</p>}
+
+          {!loading && !error && filteredProducts.length === 0 && (
+            <p>No products found.</p>
+          )}
 
           <div className="filter-product-grid">
             {filteredProducts.map((product) => (
@@ -117,11 +144,8 @@ const Filter = () => {
               />
             ))}
           </div>
-
         </div>
-
       </div>
-
     </section>
   );
 };

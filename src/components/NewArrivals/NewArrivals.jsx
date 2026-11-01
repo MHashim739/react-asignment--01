@@ -1,10 +1,38 @@
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import "./NewArrivals.css";
-import products from "../../data/products.js";
+import { getProducts } from "../../services/productService";
 import ProductCard from "../ProductCard/ProductCard";
 
 const NewArrivals = () => {
   const [showAll, setShowAll] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await getProducts();
+
+        const formattedProducts = data.map((product) => ({
+          ...product,
+          id: product._id,
+          discount: product.discount
+            ? `-${product.discount}%`
+            : "",
+        }));
+
+        setProducts(formattedProducts);
+      } catch (error) {
+        setError("Products load nahi ho sake.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const visibleProducts = showAll
     ? products
@@ -13,6 +41,14 @@ const NewArrivals = () => {
   return (
     <section className="new-arrivals">
       <h2>NEW ARRIVALS</h2>
+
+      {loading && <p>Loading products...</p>}
+
+      {error && <p>{error}</p>}
+
+      {!loading && !error && products.length === 0 && (
+        <p>Abhi koi product available nahi hai.</p>
+      )}
 
       <div className="products-grid">
         {visibleProducts.map((product) => (
@@ -23,7 +59,7 @@ const NewArrivals = () => {
         ))}
       </div>
 
-      {!showAll && (
+      {!loading && products.length > 4 && !showAll && (
         <button
           className="view-all-btn"
           onClick={() => setShowAll(true)}

@@ -190,3 +190,44 @@
     font-size: 18px;
   }
 }
+
+.navbar-logo {
+  text-decoration: none;
+  color: #000;
+  font-weight: 800;
+}
+
+.navbar-icons {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.navbar-icons a {
+  text-decoration: none;
+}
+
+.admin-login-link {
+  background: #111;
+  color: white !important;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.admin-login-link:hover {
+  background: #444;
+}
+
+@media (max-width: 650px) {
+  .navbar-icons {
+    gap: 10px;
+  }
+
+  .admin-login-link {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+}
